@@ -1,0 +1,120 @@
+---
+// Versión estática (Fase 2): grilla de tarjetas. En la Fase 5 pasa a escena
+// pineada con una solución por vez y su visual a la derecha.
+import CabeceraSeccion from '../components/ui/CabeceraSeccion.astro';
+import LectorFacial from '../components/ui/LectorFacial.astro';
+import { soluciones } from '../data/soluciones.js';
+---
+<section class="seccion soluciones" id="soluciones" aria-labelledby="soluciones-titulo">
+  <div class="contenedor">
+    <CabeceraSeccion badge="Servicios" id="soluciones-titulo"
+      subtitulo="Tecnología pensada para que entrar sea simple para quien corresponde, y difícil para quien no.">
+      Nuestras <span class="oro">soluciones</span> en control de accesos
+    </CabeceraSeccion>
+
+    <ul class="soluciones__grilla">
+      {soluciones.map((s) => (
+        <li class:list={['tarjeta', { 'tarjeta--demo': s.demo }]} data-id={s.id}>
+          <span class="icono-trazo tarjeta__icono" aria-hidden="true">
+            <svg viewBox="0 0 24 24" set:html={s.icono} />
+          </span>
+          <h3 class="tarjeta__titulo">{s.titulo}</h3>
+          <p class="tarjeta__texto">{s.texto}</p>
+          <a class="tarjeta__link" href={s.href} data-track="clic_solucion" data-ubicacion="servicio" data-servicio={s.servicio}>Ver solución</a>
+          {s.demo === 'facial' && <div class="tarjeta__demo"><LectorFacial /></div>}
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .soluciones__grilla {
+    display: grid;
+    gap: 16px;
+  }
+
+  .tarjeta {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 24px;
+    overflow: hidden;
+    background: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    transition: border-color var(--medio), transform var(--rapido), background var(--medio);
+  }
+
+  /* Línea dorada inferior que se dibuja en hover */
+  .tarjeta::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0;
+    height: 3px;
+    background: var(--oro);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .tarjeta__icono { margin-bottom: 20px; }
+
+  .tarjeta__titulo {
+    margin-bottom: 10px;
+    font-size: 19px;
+    font-weight: 800;
+    line-height: 1.3;
+  }
+
+  .tarjeta__texto {
+    flex: 1;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .tarjeta__link {
+    align-self: flex-start;
+    color: var(--oro);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: letter-spacing var(--rapido);
+  }
+
+  .tarjeta__link::after { content: ' →'; }
+
+  /* Toda la tarjeta clicable sin perder el link semántico */
+  .tarjeta__link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .tarjeta:focus-within { border-color: var(--oro-borde-fuerte); }
+
+  .tarjeta__demo { margin-top: 20px; }
+
+  @media (hover: hover) {
+    .tarjeta:hover {
+      border-color: rgba(245, 190, 0, 0.4);
+      transform: translateY(-4px);
+    }
+
+    .tarjeta:hover::after { transform: scaleX(1); }
+    .tarjeta:hover .tarjeta__icono { background: var(--oro-fondo-fuerte); }
+    .tarjeta:hover .tarjeta__link { letter-spacing: 0.14em; }
+  }
+
+  @media (min-width: 640px) {
+    .soluciones__grilla { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (min-width: 1024px) {
+    .soluciones__grilla { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>

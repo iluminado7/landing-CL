@@ -1,0 +1,66 @@
+---
+// Versión estática (Fase 2): las 3 etapas en tarjetas. En la Fase 5 se suma
+// el escenario de mapas (CABA → Argentina → globo) pineado.
+import CabeceraSeccion from '../components/ui/CabeceraSeccion.astro';
+import { etapas } from '../data/etapas.js';
+---
+<section class="seccion expansion" id="expansion" aria-labelledby="expansion-titulo">
+  <div class="contenedor">
+    <CabeceraSeccion centro badge="Expansión" id="expansion-titulo"
+      subtitulo="Cerrajería Leonardo® es la primera empresa argentina del sector en crear una red de franquicias de control de accesos y seguridad electrónica para consorcios, fideicomisos, real estate y edificios.">
+      Un modelo pensado <span class="oro">para crecer</span>
+    </CabeceraSeccion>
+
+    <ol class="etapas">
+      {etapas.map((e) => (
+        <li class="etapa" data-id={e.id}>
+          <div class="etapa__cabecera">
+            <span class="icono-trazo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" set:html={e.icono} />
+            </span>
+            <h3 class="etapa__titulo">{e.titulo}</h3>
+          </div>
+          <p class="etapa__texto">{e.texto}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .etapas {
+    display: grid;
+    gap: 16px;
+  }
+
+  .etapa {
+    position: relative;
+    padding: 28px 24px;
+    background: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+  }
+
+  .etapa__cabecera {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .etapa__titulo {
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.25;
+  }
+
+  .etapa__texto {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  @media (min-width: 900px) {
+    .etapas { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>

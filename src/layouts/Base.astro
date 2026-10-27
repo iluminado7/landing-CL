@@ -1,0 +1,60 @@
+---
+import '../styles/tokens.css';
+import '../styles/base.css';
+import '../styles/componentes.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsappFlotante from '../components/WhatsappFlotante.astro';
+import { ruta } from '../scripts/ruta.js';
+
+// URL propia de la landing (incluye la subcarpeta): https://cerrajerialeonardo.com.ar/landing/
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const isotipo = new URL(ruta('/img/Isotipo-CerrajeriaLeonardo.png'), Astro.site).href;
+
+const {
+  titulo = 'Control de acceso para consorcios y empresas en CABA | Cerrajería Leonardo',
+  descripcion = 'Control de acceso para consorcios, edificios y empresas en CABA. Mirá el presupuesto online con precios publicados: comodato o compra, llaveros y tarjetas HID.',
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{titulo}</title>
+  <meta name="description" content={descripcion}>
+  <!-- Canonical a la landing, NO a la home: si apunta a la home, Google no la indexa -->
+  <link rel="canonical" href={canonical}>
+  <meta name="theme-color" content="#151413">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:url" content={canonical}>
+  <meta property="og:title" content="Accesos inteligentes. Seguridad sin complicaciones. | Cerrajería Leonardo">
+  <meta property="og:description" content="Control de acceso para consorcios, empresas y edificios en CABA. Tecnología, instalación profesional y soporte.">
+  <meta property="og:image" content={isotipo}>
+
+  <link rel="icon" type="image/png" href={ruta('/img/Isotipo-CerrajeriaLeonardo.png')}>
+  <link rel="apple-touch-icon" href={ruta('/img/Isotipo-CerrajeriaLeonardo.png')}>
+
+  <!-- Marca de JS antes de pintar; si las animaciones no arrancan en 3 s, todo queda visible -->
+  <script is:inline>
+    document.documentElement.classList.add('js');
+    setTimeout(function () {
+      if (!window.landingLista) document.documentElement.classList.remove('js');
+    }, 3000);
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <Header />
+  <main id="contenido"><slot /></main>
+  <Footer />
+  <WhatsappFlotante />
+
+  <script>
+    import { iniciar } from '../scripts/animaciones.js';
+    iniciar();
+  </script>
+</body>
+</html>

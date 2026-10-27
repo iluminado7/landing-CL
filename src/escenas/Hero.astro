@@ -1,0 +1,188 @@
+---
+import { Image } from 'astro:assets';
+import base from '../assets/img/hero-base-rojo.webp';
+import Badge from '../components/ui/Badge.astro';
+import Boton from '../components/ui/Boton.astro';
+import { PRESUPUESTO_ONLINE } from '../data/contacto.js';
+
+// El número final va en el HTML (SEO / sin JS); contadores.js lo anima desde 0
+const stats = [
+  { label: 'Consorcios activos', num: 1300, prefijo: '+' },
+  { label: 'Puertas instaladas', num: 1600, prefijo: '+' },
+  { label: 'Usuarios activos', num: 300, prefijo: '+', sufijo: 'K' },
+];
+---
+<section class="hero" id="inicio" aria-labelledby="hero-titulo">
+  <div class="hero__fondo" aria-hidden="true">
+    <Image src={base} alt="" class="hero__poster" widths={[768, 1280, 1920, 2576]}
+           sizes="100vw" loading="eager" fetchpriority="high" />
+    <!-- Fase 5: acá va el <video> en loop, con este mismo poster -->
+    <div class="hero__degrade"></div>
+  </div>
+
+  <div class="hero__inner contenedor">
+    <div class="hero__texto">
+      <Badge>CABA · Control de accesos</Badge>
+      <h1 class="hero__titulo" id="hero-titulo">
+        Control de acceso.
+        <span class="oro">Seguridad sin complicaciones.</span>
+      </h1>
+      <p class="hero__bajada">
+        Instalación de sistemas inteligentes de control de accesos para consorcios, edificios y empresas.
+      </p>
+      <div class="hero__botones">
+        <Boton href={PRESUPUESTO_ONLINE} grande flecha track="clic_presupuesto_online" ubicacion="hero">Ver presupuesto online</Boton>
+        <Boton href="#soluciones" variante="secundario" grande flecha track="clic_ver_servicios" ubicacion="hero">Ver servicios</Boton>
+      </div>
+      <dl class="hero__stats">
+        {stats.map((s) => (
+          <div class="stat">
+            <dt class="stat__label">{s.label}</dt>
+            <dd class="stat__num" data-contar={s.num} data-prefijo={s.prefijo} data-sufijo={s.sufijo}>
+              {(s.prefijo ?? '') + s.num + (s.sufijo ?? '')}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: calc(var(--header-alto) + 48px) 0 64px;
+    overflow: hidden;
+    background: var(--negro-profundo);
+  }
+
+  .hero__fondo {
+    position: absolute;
+    inset: 0;
+  }
+
+  /* La puerta y el lector están a la derecha de la imagen: en pantallas
+     angostas se corre el encuadre para que no se pierdan */
+  .hero__fondo :global(.hero__poster) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 75% center;
+  }
+
+  /* Degradé de la guía: izquierda negra → derecha transparente, más un
+     piso oscuro para que los números se lean. En mobile el texto ocupa
+     todo el ancho, así que el velo es parejo. */
+  .hero__degrade {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(0deg, rgba(15, 14, 13, 0.85) 0%, transparent 40%),
+      rgba(15, 14, 13, 0.62);
+  }
+
+  .hero__inner { position: relative; }
+
+  .hero__texto {
+    position: relative;
+    max-width: 640px;
+    padding-left: 18px;
+  }
+
+  /* Línea dorada izquierda (pseudo-elemento para poder dibujarla con GSAP) */
+  .hero__texto::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 3px;
+    background: var(--oro);
+    transform-origin: top;
+  }
+
+  .hero__titulo {
+    margin-bottom: 20px;
+    font-size: clamp(32px, 8.5vw, 58px);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+
+  .hero__titulo .oro { display: block; }
+
+  .hero__bajada {
+    max-width: 520px;
+    margin-bottom: 32px;
+    color: rgba(248, 249, 250, 0.8);
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  .hero__botones {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Cifras: número dorado, rótulo en mayúsculas debajo y separadores finos */
+  .hero__stats {
+    display: flex;
+    margin: 36px 0 0;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .stat {
+    display: flex;
+    flex: 1;
+    flex-direction: column-reverse; /* en el HTML va primero el rótulo (dt) */
+    padding: 0 16px;
+    border-left: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .stat:first-child {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .stat__num {
+    margin: 0;
+    color: var(--oro);
+    font-size: clamp(24px, 6.5vw, 34px);
+    font-weight: 800;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stat__label {
+    margin-top: 4px;
+    color: var(--texto);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  @media (min-width: 560px) {
+    .hero__botones { flex-direction: row; flex-wrap: wrap; }
+  }
+
+  @media (min-width: 900px) {
+    .hero__fondo :global(.hero__poster) { object-position: center; }
+
+    .hero__degrade {
+      background:
+        linear-gradient(90deg, rgba(15, 14, 13, 0.92) 0%, rgba(15, 14, 13, 0.7) 38%, transparent 70%),
+        linear-gradient(0deg, rgba(15, 14, 13, 0.6) 0%, transparent 30%);
+    }
+
+    .hero__texto { padding-left: 28px; }
+
+    .stat { flex: 0 0 auto; padding: 0 28px; }
+  }
+</style>

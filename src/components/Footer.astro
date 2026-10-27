@@ -1,0 +1,215 @@
+---
+import { ruta } from '../scripts/ruta.js';
+import { contactos, SUCURSALES } from '../data/contacto.js';
+import { sucursales } from '../data/sucursales.js';
+
+const anio = new Date().getFullYear();
+
+const legales = [
+  { href: 'https://cerrajerialeonardo.com.ar/politica-de-privacidad/', texto: 'Política de privacidad' },
+  { href: 'https://cerrajerialeonardo.com.ar/terminos-y-condiciones/', texto: 'Términos y condiciones' },
+  { href: 'https://cerrajerialeonardo.com.ar/politica-de-cookies/', texto: 'Política de cookies' },
+  { href: 'https://cerrajerialeonardo.com.ar/legales/', texto: 'Legales' },
+];
+---
+<footer class="footer" id="contacto">
+  <div class="contenedor">
+    <div class="footer__grilla">
+      <div class="footer__marca">
+        <img src={ruta('/img/Logo-cerrajeria-2048x363.png')} alt="Cerrajería Leonardo" width="2048" height="363" loading="lazy">
+        <p>Soluciones de control de acceso para consorcios, edificios y empresas en la Ciudad de Buenos Aires.</p>
+        <!-- Íconos sociales del tema Blocksy, iguales a los del sitio -->
+        <ul class="redes">
+          <li><a href="https://www.instagram.com/cerrajerialeonardo/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.3"/><path d="M14.2,0H5.8C2.6,0,0,2.6,0,5.8v8.3C0,17.4,2.6,20,5.8,20h8.3c3.2,0,5.8-2.6,5.8-5.8V5.8C20,2.6,17.4,0,14.2,0zM10,15c-2.8,0-5-2.2-5-5s2.2-5,5-5s5,2.2,5,5S12.8,15,10,15z M15.8,5C15.4,5,15,4.6,15,4.2s0.4-0.8,0.8-0.8s0.8,0.4,0.8,0.8S16.3,5,15.8,5z"/></svg>
+          </a></li>
+          <li><a href="https://www.facebook.com/CerrajeriaLeonardo" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M20,10.1c0-5.5-4.5-10-10-10S0,4.5,0,10.1c0,5,3.7,9.1,8.4,9.9v-7H5.9v-2.9h2.5V7.9C8.4,5.4,9.9,4,12.2,4c1.1,0,2.2,0.2,2.2,0.2v2.5h-1.3c-1.2,0-1.6,0.8-1.6,1.6v1.9h2.8L13.9,13h-2.3v7C16.3,19.2,20,15.1,20,10.1z"/></svg>
+          </a></li>
+          <li><a href="https://www.youtube.com/channel/UCH0XLVL2F0Y3fUfF6xAl2ug/videos" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M15,0H5C2.2,0,0,2.2,0,5v10c0,2.8,2.2,5,5,5h10c2.8,0,5-2.2,5-5V5C20,2.2,17.8,0,15,0z M14.5,10.9l-6.8,3.8c-0.1,0.1-0.3,0.1-0.5,0.1c-0.5,0-1-0.4-1-1l0,0V6.2c0-0.5,0.4-1,1-1c0.2,0,0.3,0,0.5,0.1l6.8,3.8c0.5,0.3,0.7,0.8,0.4,1.3C14.8,10.6,14.6,10.8,14.5,10.9z"/></svg>
+          </a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="footer__titulo">Contacto</h2>
+        <ul class="footer__lista">
+          {contactos.map((c) => (
+            <li><span class="footer__rotulo">{c.rotulo}</span><a href={c.href} data-track={c.track} data-ubicacion="footer">{c.texto}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <a class="footer__sucursales" href={SUCURSALES} data-track="clic_sucursales" data-ubicacion="footer">
+        <h2 class="footer__titulo">Sucursales</h2>
+        <ul class="footer__lista footer__lista--sucursales">
+          {sucursales.map((s) => <li><span class="footer__rotulo">{s.barrio}</span>{s.direccion}</li>)}
+        </ul>
+        <span class="footer__sucursales-cta">Ver sucursales <span aria-hidden="true">→</span></span>
+      </a>
+    </div>
+
+    <div class="footer__legal">
+      <ul class="footer__links">
+        {legales.map((l) => <li><a href={l.href} target="_blank" rel="noopener">{l.texto}</a></li>)}
+      </ul>
+      <p>CerrajeriaLeonardo es un marca registrada ante el I.N.P.I, administrada, desarrollada, comercializada y explotada por Acceso Leonardo S.A.S, CUIT 30-71871070-3, con domicilio constituido en Senillosa 235, C1424BOE, de la Ciudad Autónoma de Buenos Aires, República Argentina. Todos los derechos reservados. Copyright © {anio}. Centro de Atención al Cliente: 0800-222-3761 / 011-4903-9068 | Correo electrónico: info@cerrajerialeonardo.com.ar | El uso de este sitio web implica la aceptación irrevocable de los Términos y Condiciones, las Políticas de Privacidad y las Políticas de Cookies de CERRAJERIA LEONARDO. Las fotos de los productos y servicios son de carácter meramente ilustrativo y la venta de cualquiera de los productos o servicios publicados está sujeta a la previa verificación y disponibilidad de stock. Los precios online para los productos y servicios presentados o publicados en este sitio (www.cerrajerialeonardo.com.ar) son válidos exclusivamente para la República Argentina y para la compra vía internet en la página mencionada anteriormente, pudiendo los precios estar sujetos a modificaciones sin previo aviso.</p>
+    </div>
+
+    <p class="footer__eslogan">Más de 30 años brindando soluciones de acceso en CABA</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding: 64px 0 96px;
+    background: var(--negro-profundo);
+    border-top: 1px solid var(--borde);
+  }
+
+  .footer__grilla {
+    display: grid;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--borde);
+  }
+
+  .footer__marca img {
+    width: auto;
+    height: 32px;
+    margin-bottom: 16px;
+  }
+
+  .footer__marca p {
+    max-width: 340px;
+    margin-bottom: 20px;
+    color: var(--texto-tenue);
+    font-size: 14px;
+  }
+
+  /* Estilo "simple" de Blocksy: ícono relleno, sin fondo, hover dorado */
+  .redes {
+    display: flex;
+    gap: 4px;
+    margin-left: -11px;
+  }
+
+  .redes a {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+  }
+
+  .redes svg {
+    width: 20px;
+    height: 20px;
+    fill: #ffffff;
+    transition: fill var(--medio);
+  }
+
+  .redes a:hover svg { fill: var(--oro); }
+
+  .footer__titulo {
+    margin-bottom: 16px;
+    color: var(--oro);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .footer__lista {
+    display: grid;
+    gap: 12px;
+    font-size: 14px;
+  }
+
+  .footer__lista--sucursales { gap: 10px; }
+
+  .footer__sucursales {
+    display: block;
+    margin: -16px;
+    padding: 16px;
+    border: 1px solid transparent;
+    border-radius: var(--radio);
+    color: var(--texto);
+    text-decoration: none;
+    transition: border-color var(--medio), background var(--medio);
+  }
+
+  .footer__sucursales-cta {
+    display: inline-block;
+    margin-top: 18px;
+    color: var(--oro);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: letter-spacing var(--rapido);
+  }
+
+  .footer__sucursales:hover {
+    background: var(--superficie);
+    border-color: rgba(245, 190, 0, 0.4);
+  }
+
+  .footer__sucursales:hover .footer__sucursales-cta { letter-spacing: 0.14em; }
+
+  .footer__rotulo {
+    display: block;
+    color: var(--texto-suave);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .footer__lista a {
+    color: var(--texto);
+    text-decoration: none;
+    transition: color var(--rapido);
+  }
+
+  .footer__lista a:hover { color: var(--oro); }
+
+  .footer__legal {
+    padding-top: 28px;
+    color: var(--texto-suave);
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    margin-bottom: 14px;
+  }
+
+  .footer__links a {
+    color: var(--texto-tenue);
+    text-decoration: none;
+    transition: color var(--rapido);
+  }
+
+  .footer__links a:hover { color: var(--oro); }
+
+  .footer__eslogan {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--borde);
+    color: var(--oro);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  @media (min-width: 768px) {
+    .footer__grilla { grid-template-columns: 1.2fr 1fr 1fr; }
+    .footer { padding-bottom: 48px; }
+  }
+</style>

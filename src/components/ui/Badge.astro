@@ -1,0 +1,4 @@
+---
+const { class: clase = '' } = Astro.props;
+---
+<p class:list={['badge', clase]}><span class="badge__dot" aria-hidden="true"></span><slot /></p>

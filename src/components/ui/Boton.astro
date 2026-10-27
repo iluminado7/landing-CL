@@ -1,0 +1,20 @@
+---
+// <Boton href="…" variante="primario" grande track="clic_…" ubicacion="hero" flecha>Texto</Boton>
+const {
+  href,
+  variante = 'primario',
+  grande = false,
+  flecha = false,
+  track,
+  ubicacion,
+  class: clase = '',
+  ...resto
+} = Astro.props;
+---
+<a
+  class:list={['btn', `btn--${variante}`, { 'btn--grande': grande }, clase]}
+  href={href}
+  data-track={track}
+  data-ubicacion={ubicacion}
+  {...resto}
+><slot />{flecha && <span aria-hidden="true"> →</span>}</a>

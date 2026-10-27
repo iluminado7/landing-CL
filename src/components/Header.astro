@@ -1,0 +1,209 @@
+---
+import Boton from './ui/Boton.astro';
+import { ruta } from '../scripts/ruta.js';
+import { SOLICITAR_SERVICIO } from '../data/contacto.js';
+
+const links = [
+  { href: '#soluciones', texto: 'Soluciones' },
+  { href: '#sectores', texto: 'Sectores' },
+  { href: '#expansion', texto: 'Expansión' },
+  { href: '#reconocimiento', texto: 'Reconocimiento' },
+  { href: '#contacto', texto: 'Contacto' },
+];
+---
+<header class="header" id="header">
+  <div class="header__inner contenedor">
+    <a class="header__logo" href="#inicio" aria-label="Cerrajería Leonardo — volver al inicio">
+      <img src={ruta('/img/Logo-cerrajeria-2048x363.png')} alt="Cerrajería Leonardo" width="2048" height="363">
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Principal">
+      <ul class="nav__lista">
+        {links.map((l) => <li><a class="nav__link" href={l.href}>{l.texto}</a></li>)}
+      </ul>
+      <Boton href={SOLICITAR_SERVICIO} class="nav__cta" track="clic_solicitar_servicio" ubicacion="menu">Solicitar servicio</Boton>
+    </nav>
+
+    <Boton href={SOLICITAR_SERVICIO} class="header__cta" track="clic_solicitar_servicio" ubicacion="header">Solicitar servicio</Boton>
+
+    <button class="menu-btn" id="menu-btn" type="button" aria-controls="nav" aria-expanded="false" aria-label="Abrir menú">
+      <span class="menu-btn__barra"></span>
+      <span class="menu-btn__barra"></span>
+      <span class="menu-btn__barra"></span>
+    </button>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 50;
+    height: var(--header-alto);
+    background: rgba(21, 20, 19, 0.55);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid transparent;
+    transition: background var(--medio), border-color var(--medio);
+  }
+
+  .header--scroll {
+    background: rgba(21, 20, 19, 0.96);
+    border-bottom-color: var(--borde);
+  }
+
+  /* Barra de progreso de lectura: header.js actualiza --progreso (0 a 1) */
+  .header::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    background: var(--oro);
+    opacity: 0.85;
+    transform: scaleX(var(--progreso, 0));
+    transform-origin: left;
+    pointer-events: none;
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    height: 100%;
+  }
+
+  .header__logo { flex-shrink: 0; }
+
+  .header__logo img {
+    width: auto;
+    height: 30px;
+  }
+
+  .header :global(.header__cta) { display: none; }
+
+  /* Botón hamburguesa */
+  .menu-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 0 11px;
+    margin-right: -11px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .menu-btn__barra {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--texto);
+    border-radius: 2px;
+    transition: transform var(--medio), opacity var(--rapido);
+  }
+
+  .menu-btn[aria-expanded="true"] .menu-btn__barra:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .menu-btn[aria-expanded="true"] .menu-btn__barra:nth-child(2) { opacity: 0; }
+  .menu-btn[aria-expanded="true"] .menu-btn__barra:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Menú en mobile: panel desplegable */
+  .nav {
+    position: fixed;
+    inset: var(--header-alto) 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px var(--gutter) 28px;
+    background: var(--negro);
+    border-bottom: 1px solid var(--borde);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity var(--medio), transform var(--medio), visibility 0s linear 0.25s;
+  }
+
+  .nav--abierto {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition: opacity var(--medio), transform var(--medio), visibility 0s;
+  }
+
+  .nav__link {
+    display: block;
+    padding: 14px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+    color: var(--texto);
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color var(--rapido);
+  }
+
+  .nav__link:hover { color: var(--oro); }
+
+  .nav :global(.nav__cta) { margin-top: 16px; }
+
+  /* Links del menú mobile: entran escalonados al abrir */
+  @media (max-width: 1023px) {
+    .nav__lista li,
+    .nav :global(.nav__cta) {
+      opacity: 0;
+      transform: translateY(-6px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav--abierto .nav__lista li,
+    .nav--abierto :global(.nav__cta) {
+      opacity: 1;
+      transform: none;
+    }
+
+    .nav--abierto .nav__lista li:nth-child(1) { transition-delay: 60ms; }
+    .nav--abierto .nav__lista li:nth-child(2) { transition-delay: 110ms; }
+    .nav--abierto .nav__lista li:nth-child(3) { transition-delay: 160ms; }
+    .nav--abierto .nav__lista li:nth-child(4) { transition-delay: 210ms; }
+    .nav--abierto .nav__lista li:nth-child(5) { transition-delay: 260ms; }
+    .nav--abierto :global(.nav__cta) { transition-delay: 320ms; }
+  }
+
+  @media (min-width: 1024px) {
+    .header__logo img { height: 34px; }
+
+    .menu-btn,
+    .nav :global(.nav__cta) { display: none; }
+
+    .nav {
+      position: static;
+      flex-direction: row;
+      padding: 0;
+      background: none;
+      border: none;
+      visibility: visible;
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .nav__lista {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav__link {
+      padding: 8px 0;
+      border: none;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .header :global(.header__cta) { display: inline-flex; }
+  }
+</style>

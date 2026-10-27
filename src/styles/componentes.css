@@ -1,0 +1,157 @@
+/* ── Badge ──────────────────────────────────────────────────── */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 5px 12px;
+  margin-bottom: 18px;
+  background: rgba(245, 190, 0, 0.12);
+  border: 1px solid var(--oro-borde);
+  border-radius: var(--radio-chico);
+  color: var(--oro);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.badge__dot {
+  position: relative;
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--oro);
+}
+
+/* ── Botones ────────────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--radio-chico);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background var(--medio), border-color var(--medio), color var(--medio), transform var(--rapido);
+}
+
+.btn--grande {
+  min-height: 52px;
+  padding: 14px 26px;
+}
+
+.btn--primario {
+  background: var(--oro);
+  color: var(--negro);
+}
+
+.btn--primario:active {
+  background: var(--oro-activo);
+  transform: translateY(0);
+}
+
+.btn--secundario {
+  background: transparent;
+  color: var(--texto);
+  border: 1.5px solid rgba(248, 249, 250, 0.4);
+  font-weight: 600;
+}
+
+@media (hover: hover) {
+  .btn--primario:hover {
+    background: var(--oro-hover);
+    transform: translateY(-2px);
+  }
+
+  .btn--secundario:hover {
+    background: rgba(248, 249, 250, 0.08);
+    border-color: var(--texto);
+    transform: translateY(-2px);
+  }
+}
+
+/* ── Secciones ──────────────────────────────────────────────── */
+
+.seccion { padding: var(--seccion-y) 0; }
+
+.seccion--alterna {
+  background: var(--negro-profundo);
+  border-top: 1px solid var(--borde);
+  border-bottom: 1px solid var(--borde);
+}
+
+.seccion__cabecera {
+  max-width: 640px;
+  margin-bottom: 40px;
+}
+
+.seccion__cabecera--centro {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.seccion__cabecera--centro .badge { margin-left: auto; margin-right: auto; }
+
+.seccion__titulo {
+  margin-bottom: 14px;
+  font-size: clamp(26px, 5.5vw, 38px);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+}
+
+/* Subrayado fino bajo la parte en oro. Es un fondo (y no un
+   pseudo-elemento) para que acompañe el texto si salta de línea */
+.seccion__titulo .oro {
+  padding-bottom: 2px;
+  background: linear-gradient(var(--oro-borde-fuerte), var(--oro-borde-fuerte)) no-repeat left bottom / 100% 2px;
+}
+
+.seccion__subtitulo {
+  color: var(--texto-tenue);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+@media (min-width: 768px) {
+  .seccion__cabecera { margin-bottom: 52px; }
+}
+
+/* ── Íconos de trazo dorado (soluciones, sectores, etapas) ──── */
+
+.icono-trazo {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--oro-fondo);
+  transition: background var(--medio);
+}
+
+.icono-trazo svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: var(--oro);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

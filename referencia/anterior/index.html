@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Control de acceso para consorcios y empresas en CABA | Cerrajería Leonardo</title>
+  <meta name="description" content="Control de acceso para consorcios, edificios y empresas en CABA. Mirá el presupuesto online con precios publicados: comodato o compra, llaveros y tarjetas HID.">
+  <link rel="canonical" href="https://cerrajerialeonardo.com.ar/">
+  <meta name="theme-color" content="#151413">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:title" content="Accesos inteligentes. Seguridad sin complicaciones. | Cerrajería Leonardo">
+  <meta property="og:description" content="Control de acceso para consorcios, empresas y edificios en CABA. Tecnología, instalación profesional y soporte.">
+  <meta property="og:image" content="public/img/Isotipo-CerrajeriaLeonardo.png">
+
+  <link rel="icon" type="image/png" href="public/img/Isotipo-CerrajeriaLeonardo.png">
+  <link rel="apple-touch-icon" href="public/img/Isotipo-CerrajeriaLeonardo.png">
+
+  <link rel="stylesheet" href="public/css/styles.css">
+  <!-- Marca que hay JS antes de pintar, para que las animaciones no parpadeen -->
+  <!-- Si main.js no llega a cargar, se quita la marca y todo queda visible -->
+  <script>
+    document.documentElement.classList.add('js');
+    setTimeout(function () {
+      if (!window.landingLista) document.documentElement.classList.remove('js');
+    }, 3000);
+  </script>
+  <script src="public/js/main.js" defer></script>
+</head>
+<body>
+
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- ══════════ HEADER ══════════ -->
+  <header class="header" id="header">
+    <div class="header__inner contenedor">
+      <a class="header__logo" href="#inicio" aria-label="Cerrajería Leonardo — volver al inicio">
+        <img src="public/img/Logo-cerrajeria-2048x363.png" alt="Cerrajería Leonardo" width="2048" height="363">
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Principal">
+        <ul class="nav__lista">
+          <li><a class="nav__link" href="#soluciones">Soluciones</a></li>
+          <li><a class="nav__link" href="#sectores">Sectores</a></li>
+          <li><a class="nav__link" href="#proceso">Cómo trabajamos</a></li>
+          <li><a class="nav__link" href="#contacto">Contacto</a></li>
+        </ul>
+        <a class="btn btn--primario nav__cta" href="https://cerrajerialeonardo.com.ar/presupuesto-online/" data-track="clic_presupuesto_online" data-ubicacion="menu">Ver presupuesto online</a>
+      </nav>
+
+      <a class="btn btn--primario header__cta" href="https://cerrajerialeonardo.com.ar/presupuesto-online/" data-track="clic_presupuesto_online" data-ubicacion="header">Ver presupuesto online</a>
+
+      <button class="menu-btn" id="menu-btn" type="button" aria-controls="nav" aria-expanded="false" aria-label="Abrir menú">
+        <span class="menu-btn__barra"></span>
+        <span class="menu-btn__barra"></span>
+        <span class="menu-btn__barra"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ══════════ HERO ══════════ -->
+    <section class="hero" id="inicio" aria-labelledby="hero-titulo">
+      <div class="hero__inner contenedor">
+        <div class="hero__texto">
+          <p class="badge entrada" style="--retraso: 0ms"><span class="badge__dot" aria-hidden="true"></span>CABA · Control de accesos</p>
+          <h1 class="hero__titulo entrada" id="hero-titulo" style="--retraso: 80ms">
+            Accesos inteligentes.
+            <span class="oro">Seguridad sin complicaciones.</span>
+          </h1>
+          <p class="hero__bajada entrada" style="--retraso: 160ms">
+            Soluciones de control de acceso para consorcios, empresas y edificios.
+            Tecnología, instalación profesional y soporte.
+          </p>
+          <div class="hero__botones entrada" style="--retraso: 240ms">
+            <a class="btn btn--primario btn--grande" href="https://cerrajerialeonardo.com.ar/presupuesto-online/" data-track="clic_presupuesto_online" data-ubicacion="hero">Ver presupuesto online <span aria-hidden="true">→</span></a>
+            <a class="btn btn--secundario btn--grande" href="#soluciones">Conocer soluciones</a>
+          </div>
+          <p class="hero__contacto entrada" style="--retraso: 320ms">
+            Precios publicados, sin esperar una cotización. O llamanos al
+            <a href="tel:+541149039068" data-track="clic_telefono" data-ubicacion="hero">(011) 4903-9068</a>
+          </p>
+        </div>
+
+        <div class="hero__visual entrada" style="--retraso: 200ms" aria-hidden="true">
+          <!-- Lector con animación: el llavero HID se apoya, el lector lo lee y se pone en verde -->
+          <div class="lector">
+            <svg class="lector__svg" viewBox="-20 0 360 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="lector-cuerpo" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#2a2725"/>
+                  <stop offset="1" stop-color="#1a1817"/>
+                </linearGradient>
+                <radialGradient id="lector-brillo" cx="0.5" cy="0.5" r="0.5">
+                  <stop offset="0" stop-color="#f5be00" stop-opacity="0.35"/>
+                  <stop offset="1" stop-color="#f5be00" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="lector-brillo-ok" cx="0.5" cy="0.5" r="0.5">
+                  <stop offset="0" stop-color="#22c55e" stop-opacity="0.5"/>
+                  <stop offset="1" stop-color="#22c55e" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="llavero-cuerpo" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#2b2927"/>
+                  <stop offset="1" stop-color="#121110"/>
+                </linearGradient>
+                <radialGradient id="llavero-disco" cx="0.4" cy="0.35" r="0.75">
+                  <stop offset="0" stop-color="#ffd23f"/>
+                  <stop offset="1" stop-color="#d9a400"/>
+                </radialGradient>
+                <filter id="llavero-sombra" x="-50%" y="-50%" width="200%" height="200%">
+                  <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#000" flood-opacity="0.55"/>
+                </filter>
+              </defs>
+
+              <!-- Cuerpo del lector -->
+              <rect x="60" y="20" width="200" height="380" rx="26" fill="url(#lector-cuerpo)" stroke="rgba(255,255,255,0.08)"/>
+
+              <!-- Pantalla -->
+              <rect x="84" y="48" width="152" height="86" rx="10" fill="#0f0e0d" stroke="rgba(245,190,0,0.25)"/>
+              <rect class="lector__ok" x="84" y="48" width="152" height="86" rx="10" fill="rgba(34,197,94,0.08)" stroke="rgba(34,197,94,0.6)"/>
+              <!-- En espera: candado dorado -->
+              <g class="lector__espera" stroke="#f5be00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="150" y="78" width="20" height="16" rx="3"/>
+                <path d="M154 78v-5a6 6 0 0 1 12 0v5"/>
+              </g>
+              <!-- Acceso concedido: tilde verde -->
+              <g class="lector__ok" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="160" cy="80" r="14"/>
+                <path d="M153 80l5 5 9-10"/>
+              </g>
+              <rect x="118" y="104" width="84" height="6" rx="3" fill="rgba(248,249,250,0.25)"/>
+              <rect x="132" y="116" width="56" height="5" rx="2.5" fill="rgba(248,249,250,0.12)"/>
+
+              <!-- Teclado -->
+              <g fill="#151413" stroke="rgba(255,255,255,0.07)">
+                <rect x="88" y="156" width="40" height="30" rx="6"/><rect x="140" y="156" width="40" height="30" rx="6"/><rect x="192" y="156" width="40" height="30" rx="6"/>
+                <rect x="88" y="196" width="40" height="30" rx="6"/><rect x="140" y="196" width="40" height="30" rx="6"/><rect x="192" y="196" width="40" height="30" rx="6"/>
+                <rect x="88" y="236" width="40" height="30" rx="6"/><rect x="140" y="236" width="40" height="30" rx="6"/><rect x="192" y="236" width="40" height="30" rx="6"/>
+              </g>
+              <g fill="rgba(248,249,250,0.45)">
+                <circle cx="108" cy="171" r="2.5"/><circle cx="160" cy="171" r="2.5"/><circle cx="212" cy="171" r="2.5"/>
+                <circle cx="108" cy="211" r="2.5"/><circle cx="160" cy="211" r="2.5"/><circle cx="212" cy="211" r="2.5"/>
+                <circle cx="108" cy="251" r="2.5"/><circle cx="160" cy="251" r="2.5"/><circle cx="212" cy="251" r="2.5"/>
+              </g>
+
+              <!-- Zona de proximidad -->
+              <circle cx="160" cy="330" r="52" fill="url(#lector-brillo)"/>
+              <circle class="lector__ok" cx="160" cy="330" r="58" fill="url(#lector-brillo-ok)"/>
+              <circle cx="160" cy="330" r="34" stroke="rgba(245,190,0,0.55)" stroke-width="2"/>
+              <circle class="lector__ok" cx="160" cy="330" r="34" stroke="#22c55e" stroke-width="2.5"/>
+              <circle class="lector__pulso" cx="160" cy="330" r="34" stroke="#22c55e" stroke-width="2"/>
+              <path d="M149 330a11 11 0 0 1 22 0M143 330a17 17 0 0 1 34 0M155 330a5 5 0 0 1 10 0" stroke="#f5be00" stroke-width="2.2" stroke-linecap="round"/>
+
+              <!-- LED -->
+              <circle cx="160" cy="384" r="3.5" fill="#f5be00"/>
+              <circle class="lector__ok lector__led-ok" cx="160" cy="384" r="4" fill="#22c55e"/>
+
+              <!-- Llavero HID: forma de gota con ojal y disco central -->
+              <g class="llavero" transform="translate(296 300) rotate(-12)">
+                <g filter="url(#llavero-sombra)">
+                  <path fill="url(#llavero-cuerpo)" fill-rule="evenodd" stroke="rgba(255,255,255,0.1)"
+                        d="M-20 -46Q-20 -56 -10 -56H10Q20 -56 20 -46L28 -16A32 32 0 1 1 -28 -16Z
+                           M-13 -46A3 3 0 0 1 -10 -49H10A3 3 0 0 1 13 -46V-40A3 3 0 0 1 10 -37H-10A3 3 0 0 1 -13 -40Z"/>
+                  <circle r="24" fill="url(#llavero-disco)"/>
+                  <circle r="24" stroke="rgba(0,0,0,0.25)" stroke-width="1.5"/>
+                  <rect x="-15" y="-8" width="30" height="16" rx="3" stroke="rgba(21,20,19,0.35)" stroke-width="1.5"/>
+                  <path d="M-6 3a6 6 0 0 1 12 0M-10 3a10 10 0 0 1 20 0" stroke="rgba(21,20,19,0.45)" stroke-width="1.6" stroke-linecap="round" transform="translate(0 -1)"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ FRANJA DE CONFIANZA ══════════ -->
+    <section class="confianza" aria-label="Lo que ofrecemos">
+      <ul class="confianza__lista contenedor">
+        <li class="confianza__item revelar">
+          <span class="confianza__icono" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+          </span>
+          Soluciones de control de acceso
+        </li>
+        <li class="confianza__item revelar">
+          <span class="confianza__icono" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h4"/></svg>
+          </span>
+          Presupuesto online con precios publicados
+        </li>
+        <li class="confianza__item revelar">
+          <span class="confianza__icono" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.6-.4-.4-2.6z"/></svg>
+          </span>
+          Instalación y soporte técnico
+        </li>
+      </ul>
+    </section>
+
+    <!-- ══════════ SOLUCIONES ══════════ -->
+    <section class="seccion" id="soluciones" aria-labelledby="soluciones-titulo">
+      <div class="contenedor">
+        <header class="seccion__cabecera revelar">
+          <p class="badge"><span class="badge__dot" aria-hidden="true"></span>Servicios</p>
+          <h2 class="seccion__titulo" id="soluciones-titulo">Nuestras <span class="oro">soluciones</span> en control de accesos</h2>
+          <p class="seccion__subtitulo">Tecnología pensada para que entrar sea simple para quien corresponde, y difícil para quien no.</p>
+        </header>
+
+        <ul class="grilla grilla--3">
+          <li class="tarjeta revelar">
+            <span class="tarjeta__icono" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M8 17h8"/></svg>
+            </span>
+            <h3 class="tarjeta__titulo">Control de acceso</h3>
+            <p class="tarjeta__texto">Gestión de ingresos y egresos en tiempo real. Altas y bajas de usuarios sin cambiar cerraduras ni repartir llaves.</p>
+            <a class="tarjeta__link" href="https://cerrajerialeonardo.com.ar/soluciones/control-acceso/" data-track="clic_solucion" data-ubicacion="servicio" data-servicio="Control de acceso">Ver solución</a>
+          </li>
+          <li class="tarjeta tarjeta--demo revelar">
+            <span class="tarjeta__icono" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><circle cx="12" cy="10" r="2.5"/><path d="M8 16.5c.8-1.8 2.3-2.8 4-2.8s3.2 1 4 2.8"/></svg>
+            </span>
+            <h3 class="tarjeta__titulo">Sistemas biométricos</h3>
+            <p class="tarjeta__texto">Acceso mediante reconocimiento facial. La credencial es la persona: no se pierde, no se presta, no se copia.</p>
+            <a class="tarjeta__link" href="https://cerrajerialeonardo.com.ar/soluciones/control-acceso-biometrico/" data-track="clic_solucion" data-ubicacion="servicio" data-servicio="Sistema biométrico">Ver solución</a>
+
+            <!-- Demo del lector facial: se despliega al pasar el mouse (en táctil se ve siempre).
+                 La anima main.js ("Lector facial"): se dibuja la silueta, pasa el haz y se tilda en verde. -->
+            <div class="tarjeta__demo" aria-hidden="true">
+              <div class="facial">
+                <svg class="facial__svg" viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="facial-cuerpo" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#2a2725"/>
+                      <stop offset="1" stop-color="#1a1817"/>
+                    </linearGradient>
+                    <linearGradient id="facial-haz" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#f5be00" stop-opacity="0"/>
+                      <stop offset="1" stop-color="#f5be00" stop-opacity="0.35"/>
+                    </linearGradient>
+                    <clipPath id="facial-pantalla">
+                      <rect x="20" y="26" width="80" height="104" rx="6"/>
+                    </clipPath>
+                  </defs>
+
+                  <!-- Cuerpo y cámara -->
+                  <rect x="10" y="4" width="100" height="152" rx="14" fill="url(#facial-cuerpo)" stroke="rgba(255,255,255,0.08)"/>
+                  <circle cx="60" cy="15" r="3.5" fill="#0f0e0d" stroke="rgba(245,190,0,0.4)"/>
+                  <circle cx="61" cy="14" r="1" fill="rgba(248,249,250,0.5)"/>
+
+                  <!-- Pantalla -->
+                  <rect x="20" y="26" width="80" height="104" rx="6" fill="#0f0e0d" stroke="rgba(245,190,0,0.25)"/>
+                  <rect class="facial__ok" x="20" y="26" width="80" height="104" rx="6" fill="rgba(34,197,94,0.08)" stroke="rgba(34,197,94,0.6)"/>
+
+                  <g clip-path="url(#facial-pantalla)">
+                    <!-- Marco de enfoque -->
+                    <path d="M32 46V38h8M80 38h8v8M88 102v8h-8M40 110h-8v-8" stroke="#f5be00" stroke-opacity="0.8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path class="facial__ok" d="M32 46V38h8M80 38h8v8M88 102v8h-8M40 110h-8v-8" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+                    <g class="facial__cara">
+                      <!-- Silueta que se dibuja: cabeza y hombros -->
+                      <g stroke="#f5be00" stroke-width="2" stroke-linecap="round">
+                        <circle class="facial__trazo" cx="60" cy="62" r="14"/>
+                        <path class="facial__trazo" d="M38 108c0-14 10-22 22-22s22 8 22 22"/>
+                      </g>
+
+                      <!-- Malla facial y rasgos -->
+                      <path class="facial__rasgo" d="M60 50L50 56L48 64L52 72L60 76L68 72L72 64L70 56Z M50 56L55 60L60 50L65 60L70 56 M48 64L55 60 M72 64L65 60" stroke="rgba(245,190,0,0.28)" stroke-width="0.6" stroke-linejoin="round"/>
+                      <g fill="#f5be00">
+                        <circle class="facial__rasgo" cx="60" cy="50" r="0.9"/>
+                        <circle class="facial__rasgo" cx="50" cy="56" r="0.9"/>
+                        <circle class="facial__rasgo" cx="70" cy="56" r="0.9"/>
+                        <circle class="facial__rasgo" cx="55" cy="60" r="1.6"/>
+                        <circle class="facial__rasgo" cx="65" cy="60" r="1.6"/>
+                        <circle class="facial__rasgo" cx="48" cy="64" r="0.9"/>
+                        <circle class="facial__rasgo" cx="72" cy="64" r="0.9"/>
+                        <circle class="facial__rasgo" cx="52" cy="72" r="0.9"/>
+                        <circle class="facial__rasgo" cx="68" cy="72" r="0.9"/>
+                        <circle class="facial__rasgo" cx="60" cy="76" r="0.9"/>
+                      </g>
+                      <path class="facial__rasgo" d="M55.5 68q4.5 3 9 0" stroke="#f5be00" stroke-width="1.6" stroke-linecap="round"/>
+
+                      <!-- Silueta verde de acceso concedido -->
+                      <g class="facial__ok" stroke="#22c55e" stroke-width="2" stroke-linecap="round">
+                        <circle cx="60" cy="62" r="14"/>
+                        <path d="M38 108c0-14 10-22 22-22s22 8 22 22"/>
+                      </g>
+
+                      <!-- Tilde -->
+                      <g class="facial__check">
+                        <circle cx="78" cy="76" r="8" fill="#22c55e"/>
+                        <path d="M74.5 76l2.5 2.5 4.5-5" stroke="#0f0e0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </g>
+                    </g>
+
+                    <!-- Haz de escaneo: línea dorada con estela -->
+                    <g class="facial__scan">
+                      <rect x="24" y="-14" width="72" height="14" fill="url(#facial-haz)"/>
+                      <rect x="24" y="-1" width="72" height="2" rx="1" fill="#f5be00"/>
+                    </g>
+                  </g>
+
+                  <!-- LED -->
+                  <circle cx="60" cy="143" r="3" fill="#f5be00"/>
+                  <circle class="facial__ok facial__led-ok" cx="60" cy="143" r="3.5" fill="#22c55e"/>
+                </svg>
+
+                <div class="facial__info">
+                  <span class="facial__rotulo">Reconocimiento facial</span>
+                  <p class="facial__estado"><span class="facial__estado-texto">Detectando rostro…</span></p>
+                  <span class="facial__progreso"><span class="facial__progreso-barra"></span></span>
+                  <p class="facial__dato">Sin llaves ni tarjetas: la credencial es tu cara.</p>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="tarjeta revelar">
+            <span class="tarjeta__icono" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1.5"/></svg>
+            </span>
+            <h3 class="tarjeta__titulo">Cerraduras electrónicas</h3>
+            <p class="tarjeta__texto">Más seguridad para cada puerta con tecnología moderna y confiable, en edificios, oficinas y viviendas.</p>
+            <a class="tarjeta__link" href="https://cerrajerialeonardo.com.ar/soluciones/cerradura-electronica/" data-track="clic_solucion" data-ubicacion="servicio" data-servicio="Cerradura electrónica">Ver solución</a>
+          </li>
+          <li class="tarjeta revelar">
+            <span class="tarjeta__icono" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 7l12-3 2 7-12 3z"/><path d="M17 8l4 1-1 4-3-1"/><path d="M7 14l1 6M5 20h6"/></svg>
+            </span>
+            <h3 class="tarjeta__titulo">Cámaras de seguridad</h3>
+            <p class="tarjeta__texto">Vigilancia en alta resolución para monitorear los accesos y espacios comunes de tu edificio.</p>
+            <a class="tarjeta__link" href="https://cerrajerialeonardo.com.ar/soluciones/instalacion-camaras-seguridad/" data-track="clic_solucion" data-ubicacion="servicio" data-servicio="Cámaras de seguridad">Ver solución</a>
+          </li>
+          <li class="tarjeta revelar">
+            <span class="tarjeta__icono" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="7" height="7" rx="1.5"/><rect x="14" y="13" width="7" height="7" rx="1.5"/><path d="M10 7.5h4a3 3 0 0 1 3 3V13M14 16.5h-4a3 3 0 0 1-3-3V11"/></svg>
+            </span>
+            <h3 class="tarjeta__titulo">Integración con sistemas existentes</h3>
+            <p class="tarjeta__texto">Adaptamos software y hardware a la infraestructura que ya tenés, para no empezar de cero.</p>
+            <a class="tarjeta__link" href="https://cerrajerialeonardo.com.ar/soluciones/integracion-sistemas-existentes/" data-track="clic_solucion" data-ubicacion="servicio" data-servicio="Integración">Ver solución</a>
+          </li>
+          <li class="tarjeta revelar">
+            <span class="tarjeta__icono" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="4"/><path d="M11 11l9 9M16 16l2-2M18 18l2-2"/></svg>
+            </span>
+            <h3 class="tarjeta__titulo">Llaveros y tarjetas de proximidad</h3>
+            <p class="tarjeta__texto">Duplicación rápida y segura de credenciales RFID y tags de acceso.</p>
+            <a class="tarjeta__link" href="https://cerrajerialeonardo.com.ar/soluciones/copia-llavero-tarjetas/" data-track="clic_solucion" data-ubicacion="servicio" data-servicio="Llaveros y tarjetas">Ver solución</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ══════════ SECTORES ══════════ -->
+    <section class="seccion seccion--alterna" id="sectores" aria-labelledby="sectores-titulo">
+      <div class="contenedor">
+        <header class="seccion__cabecera revelar">
+          <p class="badge"><span class="badge__dot" aria-hidden="true"></span>Dónde trabajamos</p>
+          <h2 class="seccion__titulo" id="sectores-titulo">Instalaciones adaptadas <span class="oro">a tu entorno</span></h2>
+          <p class="seccion__subtitulo">Implementamos sistemas a medida para las necesidades de cada establecimiento.</p>
+        </header>
+
+        <ul class="sectores">
+          <li class="sector sector--destacado revelar">
+            <span class="sector__icono" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 21V5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v16M15 9h4a1 1 0 0 1 1 1v11M3 21h18"/><path d="M8 8h3M8 12h3M8 16h3"/></svg>
+            </span>
+            <div>
+              <h3 class="sector__titulo">Consorcios y edificios</h3>
+              <p class="sector__texto">Para administradores que necesitan modernizar o mantener los accesos de sus edificios.</p>
+            </div>
+          </li>
+          <li class="sector sector--destacado revelar">
+            <span class="sector__icono" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 13h18"/></svg>
+            </span>
+            <div>
+              <h3 class="sector__titulo">Empresas y comercios</h3>
+              <p class="sector__texto">Control de ingreso de personal y visitantes.</p>
+            </div>
+          </li>
+          <li class="sector sector--destacado revelar">
+            <span class="sector__icono" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V10l7-5 7 5v11"/><path d="M10 21v-5h4v5"/></svg>
+            </span>
+            <div>
+              <h3 class="sector__titulo">Desarrollos inmobiliarios</h3>
+              <p class="sector__texto">Soluciones integradas desde la etapa de proyecto.</p>
+            </div>
+          </li>
+        </ul>
+
+        <ul class="chips revelar" aria-label="Otros sectores">
+          <li class="chip">Alquiler temporario</li>
+          <li class="chip">Barrios privados</li>
+          <li class="chip">Casas particulares</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ══════════ PROCESO ══════════ -->
+    <section class="seccion" id="proceso" aria-labelledby="proceso-titulo">
+      <div class="contenedor">
+        <header class="seccion__cabecera seccion__cabecera--centro revelar">
+          <p class="badge"><span class="badge__dot" aria-hidden="true"></span>Cómo trabajamos</p>
+          <h2 class="seccion__titulo" id="proceso-titulo">Nuestro proceso de <span class="oro">trabajo</span></h2>
+          <p class="seccion__subtitulo">Trabajamos con un modelo ágil y adaptado a cada necesidad, evolucionando bajo el concepto de Acceso Leonardo.</p>
+        </header>
+
+        <ol class="pasos">
+          <li class="paso revelar">
+            <span class="paso__num" aria-hidden="true">01</span>
+            <h3 class="paso__titulo">Evaluamos tu necesidad</h3>
+            <p class="paso__texto">Analizamos el espacio, los accesos y los requerimientos específicos de tu edificio o empresa.</p>
+            <span class="paso__flecha" aria-hidden="true">→</span>
+            <span class="paso__barra" aria-hidden="true"></span>
+          </li>
+          <li class="paso revelar">
+            <span class="paso__num" aria-hidden="true">02</span>
+            <h3 class="paso__titulo">Diseñamos la solución</h3>
+            <p class="paso__texto">Seleccionamos la tecnología más adecuada y diseñamos el sistema a medida para tu caso.</p>
+            <span class="paso__flecha" aria-hidden="true">→</span>
+            <span class="paso__barra" aria-hidden="true"></span>
+          </li>
+          <li class="paso revelar">
+            <span class="paso__num" aria-hidden="true">03</span>
+            <h3 class="paso__titulo">Instalamos el sistema</h3>
+            <p class="paso__texto">Realizamos la instalación profesional con mínima interrupción a las actividades del lugar.</p>
+            <span class="paso__flecha" aria-hidden="true">→</span>
+            <span class="paso__barra" aria-hidden="true"></span>
+          </li>
+          <li class="paso revelar">
+            <span class="paso__num" aria-hidden="true">04</span>
+            <h3 class="paso__titulo">Soporte y seguimiento</h3>
+            <p class="paso__texto">Brindamos soporte técnico continuo y acompañamiento post-instalación las 24 horas.</p>
+            <span class="paso__barra" aria-hidden="true"></span>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ══════════ PRESUPUESTO ONLINE ══════════ -->
+    <section class="seccion seccion--alterna" id="presupuesto" aria-labelledby="presupuesto-titulo">
+      <div class="contenedor presupuesto">
+        <div class="presupuesto__intro revelar">
+          <p class="badge"><span class="badge__dot" aria-hidden="true"></span>Presupuesto online</p>
+          <h2 class="seccion__titulo" id="presupuesto-titulo">Solicitá tu <span class="oro">presupuesto</span></h2>
+          <p class="seccion__subtitulo">No hace falta pedirlo ni esperar una respuesta: los precios y las condiciones están online, a la vista. Entrá, elegí y compará.</p>
+
+          <a class="btn btn--primario btn--grande presupuesto__boton" href="https://cerrajerialeonardo.com.ar/presupuesto-online/" data-track="clic_presupuesto_online" data-ubicacion="presupuesto">Ver presupuesto online <span aria-hidden="true">→</span></a>
+
+          <p class="presupuesto__alternativa">¿Preferís hablar con alguien?</p>
+          <ul class="canales">
+            <li>
+              <a class="canal" href="https://wa.me/541149039068?text=Hola!%20Vengo%20de%20la%20web%20de%20Cerrajer%C3%ADa%20Leonardo%20y%20quiero%20consultar%3A%20" target="_blank" rel="noopener" data-track="clic_whatsapp" data-ubicacion="presupuesto">
+                <span class="canal__icono" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 8.5c0 3.6 2.9 6.5 6.5 6.5l1-1.6-2-1-1 1a4 4 0 0 1-2.4-2.4l1-1-1-2z"/></svg>
+                </span>
+                <span><span class="canal__rotulo">WhatsApp ventas</span>(011) 4903-9068</span>
+              </a>
+            </li>
+            <li>
+              <a class="canal" href="tel:+541132300595" data-track="clic_telefono" data-ubicacion="presupuesto">
+                <span class="canal__icono" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+                </span>
+                <span><span class="canal__rotulo">Ventas</span>(011) 3230-0595</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <a class="vista-previa revelar" href="https://cerrajerialeonardo.com.ar/presupuesto-online/" data-track="clic_presupuesto_online" data-ubicacion="vista-previa">
+          <span class="vista-previa__barra" aria-hidden="true">
+            <span></span><span></span><span></span>
+            <span class="vista-previa__url">cerrajerialeonardo.com.ar/presupuesto-online</span>
+          </span>
+          <span class="vista-previa__cuerpo">
+            <span class="vista-previa__titulo">Qué vas a encontrar</span>
+            <span class="vista-previa__lista">
+              <span class="vista-previa__item">
+                <span class="vista-previa__icono" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h4"/></svg></span>
+                <span><strong>Precios publicados</strong> de instalación, llaveros, tarjetas y abono mensual.</span>
+              </span>
+              <span class="vista-previa__item">
+                <span class="vista-previa__icono" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span>
+                <span><strong>Comodato o compra:</strong> dos modalidades de contratación para elegir.</span>
+              </span>
+              <span class="vista-previa__item">
+                <span class="vista-previa__icono" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="4"/><path d="M11 11l9 9M16 16l2-2M18 18l2-2"/></svg></span>
+                <span><strong>Credenciales HID:</strong> llavero, tarjeta y apertura desde el celular sin costo de activación.</span>
+              </span>
+              <span class="vista-previa__item">
+                <span class="vista-previa__icono" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span>
+                <span><strong>Opciones de cierre</strong> con destrabador RVT de desarrollo propio.</span>
+              </span>
+              <span class="vista-previa__item">
+                <span class="vista-previa__icono" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></span>
+                <span><strong>Presupuesto y contratos</strong> para descargar.</span>
+              </span>
+            </span>
+            <span class="vista-previa__cta">Abrir presupuesto online <span aria-hidden="true">→</span></span>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ══════════ PREGUNTAS FRECUENTES ══════════ -->
+    <section class="seccion" id="preguntas" aria-labelledby="preguntas-titulo">
+      <div class="contenedor contenedor--angosto">
+        <header class="seccion__cabecera seccion__cabecera--centro revelar">
+          <p class="badge"><span class="badge__dot" aria-hidden="true"></span>Preguntas frecuentes</p>
+          <h2 class="seccion__titulo" id="preguntas-titulo">Lo que más nos <span class="oro">consultan</span></h2>
+        </header>
+
+        <div class="faq">
+          <details class="faq__item revelar">
+            <summary>¿Cómo solicito un presupuesto?</summary>
+            <p>Entrá al<a href="https://cerrajerialeonardo.com.ar/presupuesto-online/" data-track="clic_presupuesto_online" data-ubicacion="faq"> presupuesto online</a>, para ver los precios y condiciones. Para avanzar, confirmás por mail la opción elegida. Si tenés dudas, escribinos por WhatsApp al (011) 4903-9068.</p>
+          </details>
+          <details class="faq__item revelar">
+            <summary>¿Qué diferencia hay entre comodato y compra?</summary>
+            <p>En <strong>comodato</strong> pagás la instalación y un abono mensual según la cantidad de puertas; incluye asistencia técnica 24 horas, garantía (no cubre daño intencional o fortuito), actualizaciones y recambio del equipo a cargo de la empresa, y administración online de altas y bajas. En <strong>compra</strong> pagás el equipo junto con la instalación. El detalle de cada opción está en el <a href="https://cerrajerialeonardo.com.ar/presupuesto-online/" data-track="clic_presupuesto_online" data-ubicacion="faq">presupuesto online</a>.</p>
+          </details>
+          <details class="faq__item revelar">
+            <summary>¿Trabajan con consorcios y empresas?</summary>
+            <p>Sí. Trabajamos con consorcios, administradores, empresas, comercios, desarrollos inmobiliarios y también particulares.</p>
+          </details>
+          <details class="faq__item revelar">
+            <summary>¿Qué tipos de sistemas ofrecen?</summary>
+            <p>Control de acceso electrónico, sistemas biométricos con reconocimiento facial, cerraduras electrónicas, cámaras de seguridad, integración con sistemas existentes y copia de llaveros y tarjetas de proximidad.</p>
+          </details>
+          <details class="faq__item revelar">
+            <summary>¿Cómo me comunico con soporte o urgencias?</summary>
+            <p>Para urgencias llamá al <a href="tel:+541152402035" data-track="clic_telefono" data-ubicacion="faq">(011) 5240-2035</a>. Para consultas comerciales, al <a href="tel:+541149039068" data-track="clic_telefono" data-ubicacion="faq">(011) 4903-9068</a>.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer class="footer" id="contacto">
+    <div class="contenedor">
+      <div class="footer__grilla">
+        <div class="footer__marca">
+          <img src="public/img/Logo-cerrajeria-2048x363.png" alt="Cerrajería Leonardo" width="2048" height="363" loading="lazy">
+          <p>Soluciones de control de acceso para consorcios, edificios y empresas en la Ciudad de Buenos Aires.</p>
+          <!-- Íconos sociales del tema Blocksy, iguales a los del sitio -->
+          <ul class="redes">
+            <li><a href="https://www.instagram.com/cerrajerialeonardo/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.3"/><path d="M14.2,0H5.8C2.6,0,0,2.6,0,5.8v8.3C0,17.4,2.6,20,5.8,20h8.3c3.2,0,5.8-2.6,5.8-5.8V5.8C20,2.6,17.4,0,14.2,0zM10,15c-2.8,0-5-2.2-5-5s2.2-5,5-5s5,2.2,5,5S12.8,15,10,15z M15.8,5C15.4,5,15,4.6,15,4.2s0.4-0.8,0.8-0.8s0.8,0.4,0.8,0.8S16.3,5,15.8,5z"/></svg>
+            </a></li>
+            <li><a href="https://www.facebook.com/CerrajeriaLeonardo" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M20,10.1c0-5.5-4.5-10-10-10S0,4.5,0,10.1c0,5,3.7,9.1,8.4,9.9v-7H5.9v-2.9h2.5V7.9C8.4,5.4,9.9,4,12.2,4c1.1,0,2.2,0.2,2.2,0.2v2.5h-1.3c-1.2,0-1.6,0.8-1.6,1.6v1.9h2.8L13.9,13h-2.3v7C16.3,19.2,20,15.1,20,10.1z"/></svg>
+            </a></li>
+            <li><a href="https://www.youtube.com/channel/UCH0XLVL2F0Y3fUfF6xAl2ug/videos" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+              <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M15,0H5C2.2,0,0,2.2,0,5v10c0,2.8,2.2,5,5,5h10c2.8,0,5-2.2,5-5V5C20,2.2,17.8,0,15,0z M14.5,10.9l-6.8,3.8c-0.1,0.1-0.3,0.1-0.5,0.1c-0.5,0-1-0.4-1-1l0,0V6.2c0-0.5,0.4-1,1-1c0.2,0,0.3,0,0.5,0.1l6.8,3.8c0.5,0.3,0.7,0.8,0.4,1.3C14.8,10.6,14.6,10.8,14.5,10.9z"/></svg>
+            </a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="footer__titulo">Contacto</h2>
+          <ul class="footer__lista">
+            <li><span class="footer__rotulo">Comercial</span><a href="tel:+541149039068" data-track="clic_telefono" data-ubicacion="footer">(011) 4903-9068</a></li>
+            <li><span class="footer__rotulo">Ventas</span><a href="tel:+541132300595" data-track="clic_telefono" data-ubicacion="footer">(011) 3230-0595</a></li>
+            <li><span class="footer__rotulo">Urgencias</span><a href="tel:+541152402035" data-track="clic_telefono" data-ubicacion="footer">(011) 5240-2035</a></li>
+            <li><span class="footer__rotulo">Email</span><a href="mailto:info@cerrajerialeonardo.com.ar" data-track="clic_email" data-ubicacion="footer">info@cerrajerialeonardo.com.ar</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="footer__titulo">Sucursales</h2>
+          <ul class="footer__lista footer__lista--sucursales">
+            <li><a href="https://cerrajerialeonardo.com.ar/sucursales/caballito/"><span class="footer__rotulo">Caballito · Sede central</span>Senillosa 235</a></li>
+            <li><a href="https://cerrajerialeonardo.com.ar/sucursales/colegiales/"><span class="footer__rotulo">Colegiales</span>Av. Álvarez Thomas 390</a></li>
+            <li><a href="https://cerrajerialeonardo.com.ar/sucursales/boedo/"><span class="footer__rotulo">Boedo</span>Av. Caseros 3796</a></li>
+            <li><a href="https://cerrajerialeonardo.com.ar/sucursales/palermo/"><span class="footer__rotulo">Palermo</span>Aráoz 2486</a></li>
+            <li><a href="https://cerrajerialeonardo.com.ar/sucursales/puerto-madero/"><span class="footer__rotulo">Puerto Madero</span>Av. Paseo Colón 586</a></li>
+            <li><a href="https://cerrajerialeonardo.com.ar/sucursales/recoleta/"><span class="footer__rotulo">Recoleta</span>Paraguay 1967</a></li>
+            <li><a href="https://cerrajerialeonardo.com.ar/sucursales/retiro/"><span class="footer__rotulo">Retiro</span>Juncal 954</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__legal">
+        <ul class="footer__links">
+          <li><a href="https://cerrajerialeonardo.com.ar/politica-de-privacidad/" target="_blank" rel="noopener">Política de privacidad</a></li>
+          <li><a href="https://cerrajerialeonardo.com.ar/terminos-y-condiciones/" target="_blank" rel="noopener">Términos y condiciones</a></li>
+          <li><a href="https://cerrajerialeonardo.com.ar/politica-de-cookies/" target="_blank" rel="noopener">Política de cookies</a></li>
+          <li><a href="https://cerrajerialeonardo.com.ar/legales/" target="_blank" rel="noopener">Legales</a></li>
+        </ul>
+        <p>CerrajeriaLeonardo es un marca registrada ante el I.N.P.I, administrada, desarrollada, comercializada y explotada por Acceso Leonardo S.A.S, CUIT 30-71871070-3, con domicilio constituido en Senillosa 235, C1424BOE, de la Ciudad Autónoma de Buenos Aires, República Argentina. Todos los derechos reservados. Copyright © 2026. Centro de Atención al Cliente: 0800-222-3761 / 011-4903-9068 | Correo electrónico: info@cerrajerialeonardo.com.ar | El uso de este sitio web implica la aceptación irrevocable de los Términos y Condiciones, las Políticas de Privacidad y las Políticas de Cookies de CERRAJERIA LEONARDO. Las fotos de los productos y servicios son de carácter meramente ilustrativo y la venta de cualquiera de los productos o servicios publicados está sujeta a la previa verificación y disponibilidad de stock. Los precios online para los productos y servicios presentados o publicados en este sitio (www.cerrajerialeonardo.com.ar) son válidos exclusivamente para la República Argentina y para la compra vía internet en la página mencionada anteriormente, pudiendo los precios estar sujetos a modificaciones sin previo aviso.</p>
+      </div>
+
+      <p class="footer__eslogan">Más de 30 años brindando soluciones de acceso en CABA</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <a class="whatsapp-flotante" href="https://wa.me/541149039068?text=Hola!%20Vengo%20de%20la%20web%20de%20Cerrajer%C3%ADa%20Leonardo%20y%20quiero%20consultar%3A%20" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp" data-track="clic_whatsapp" data-ubicacion="flotante">
+    <svg class="logo-whatsapp" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.304-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </a>
+
+</body>
+</html>

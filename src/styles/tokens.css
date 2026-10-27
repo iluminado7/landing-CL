@@ -1,0 +1,58 @@
+/* Tokens de la guía visual. Copiados sin cambios del styles.css anterior. */
+
+:root {
+  /* Colores */
+  --oro: #f5be00;
+  --oro-hover: #ffd000;
+  --oro-activo: #e0ac00;
+  --negro: #151413;
+  --negro-profundo: #0f0e0d;
+  --superficie: #1e1c1a;
+  --superficie-hover: #242220;
+  --texto: #f8f9fa;
+  --texto-tenue: rgba(248, 249, 250, 0.68);
+  --texto-suave: rgba(248, 249, 250, 0.5);
+  --borde: rgba(255, 255, 255, 0.07);
+  --borde-fuerte: rgba(255, 255, 255, 0.15);
+  --oro-fondo: rgba(245, 190, 0, 0.1);
+  --oro-fondo-fuerte: rgba(245, 190, 0, 0.2);
+  --oro-borde: rgba(245, 190, 0, 0.3);
+  --oro-borde-fuerte: rgba(245, 190, 0, 0.45);
+  --error: #ff8a7a;
+
+  /* Tipografía */
+  --fuente: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* Espaciado */
+  --gutter: 20px;
+  --seccion-y: 64px;
+  --ancho: 1200px;
+  --ancho-angosto: 780px;
+  --header-alto: 68px;
+
+  /* Radios */
+  --radio-chico: 4px;
+  --radio-input: 6px;
+  --radio: 8px;
+  --radio-grande: 12px;
+
+  /* Movimiento */
+  --rapido: 0.2s ease;
+  --medio: 0.25s ease;
+  --salida: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 32px;
+    --seccion-y: 88px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --gutter: 48px;
+    --seccion-y: 104px;
+    --header-alto: 76px;
+  }
+}
