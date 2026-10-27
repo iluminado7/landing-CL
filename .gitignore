@@ -2,4 +2,13 @@ plan_desarrollo_cerrajeria_leonardo.md
 README.md
 
 # Videos e imágenes fuente (pesados, sin procesar)
-public/media-src/
+media-src/
+
+# Astro
+dist/
+.astro/
+node_modules/
+npm-debug.log*
+.env
+.env.production
+.DS_Store
