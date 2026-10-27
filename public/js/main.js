@@ -186,13 +186,44 @@
     requestAnimationFrame(dibujarLector);
   }
 
+  /* ── Cifras del hero ────────────────────────────────────────
+     El HTML ya trae el número final (si no hay JS se ve igual).
+     Acá se anima de 0 al valor en 1,6 s, una sola vez.          */
+  var cifras = document.querySelectorAll('[data-contar]');
+
+  function contar(el) {
+    var final = parseInt(el.dataset.contar, 10);
+    var prefijo = el.dataset.prefijo || '';
+    var sufijo = el.dataset.sufijo || '';
+    var DURACION = 1600;
+    var inicio = null;
+
+    function paso(ahora) {
+      if (inicio === null) inicio = ahora;
+      var t = Math.min((ahora - inicio) / DURACION, 1);
+      var valor = Math.round(final * (1 - Math.pow(1 - t, 3)));
+      el.textContent = prefijo + valor + sufijo;
+      if (t < 1) requestAnimationFrame(paso);
+    }
+
+    requestAnimationFrame(paso);
+  }
+
+  if (!reducirMovimiento) {
+    cifras.forEach(function (el) {
+      el.textContent = (el.dataset.prefijo || '') + '0' + (el.dataset.sufijo || '');
+    });
+    // Arranca cuando termina la entrada del hero
+    setTimeout(function () { cifras.forEach(contar); }, 500);
+  }
+
   /* ── Íconos que se dibujan ──────────────────────────────────
      Mide cada trazo del SVG y guarda el largo en --largo; el CSS
      usa ese valor para el efecto de "dibujado" con
      stroke-dasharray. Si algo falla, el ícono queda normal.     */
   function prepararTrazos() {
     var svgs = document.querySelectorAll(
-      '.confianza__icono svg, .tarjeta__icono svg, .sector__icono svg, .vista-previa__icono svg'
+      '.sector__icono svg, .etapa__icono svg'
     );
 
     svgs.forEach(function (svg) {
@@ -212,38 +243,11 @@
 
   if (!reducirMovimiento && hayObserver) prepararTrazos();
 
-  /* ── URL de la vista previa que se tipea ─────────────────── */
-  function escribirUrl(contenedor) {
-    var url = contenedor.querySelector('.vista-previa__url');
-    if (!url || url.dataset.escrita) return;
-    url.dataset.escrita = '1';
-
-    var texto = url.textContent;
-    var i = 0;
-    url.textContent = '';
-    url.classList.add('vista-previa__url--escribiendo');
-
-    function siguienteLetra() {
-      i++;
-      url.textContent = texto.slice(0, i);
-      if (i < texto.length) {
-        setTimeout(siguienteLetra, 32);
-      } else {
-        setTimeout(function () {
-          url.classList.remove('vista-previa__url--escribiendo');
-        }, 1400);
-      }
-    }
-
-    setTimeout(siguienteLetra, 450);
-  }
-
   /* ── Revelar al hacer scroll ────────────────────────────── */
   var revelables = document.querySelectorAll('.revelar');
 
   function mostrar(el) {
     el.classList.add('visible');
-    if (!reducirMovimiento && el.classList.contains('vista-previa')) escribirUrl(el);
     // Una vez visible se quita el retraso para que el hover responda al instante
     setTimeout(function () { el.style.removeProperty('--retraso'); }, 700);
   }
@@ -271,177 +275,12 @@
     revelables.forEach(function (el) { observador.observe(el); });
   }
 
-  /* ── Recorrido del proceso ──────────────────────────────────
-     Cuando los pasos ya se ven, la barra dorada pasa por 01 → 04
-     una sola vez. Espera a que terminen de aparecer.            */
-  var pasos = document.querySelector('.pasos');
-
-  if (pasos && !reducirMovimiento && hayObserver) {
-    var observadorPasos = new IntersectionObserver(function (entradas) {
-      if (!entradas[0].isIntersecting) return;
-      observadorPasos.disconnect();
-      setTimeout(function () { pasos.classList.add('pasos--recorrido'); }, 700);
-    }, { threshold: 0.35 });
-
-    observadorPasos.observe(pasos);
-  }
-
-  /* ── Lector facial (tarjeta de Sistemas biométricos) ────────
-     Ciclo de 5,2 s, siempre desde cero cuando se abre la tarjeta:
-       0,2–1,6 s  se dibuja la silueta (cabeza y hombros)
-       1,1–1,7 s  aparecen los rasgos y la malla facial
-       1,7–2,9 s  el haz dorado barre la cara de arriba abajo
-       2,95 s     acceso concedido: todo pasa a verde y salta el tilde
-       4,5–4,9 s  la cara se desvanece y vuelve a empezar
-     Con mouse se reproduce mientras el cursor (o el foco) está en
-     la tarjeta. En táctil, mientras el demo se ve en pantalla.
-     Igual que el lector del hero, se mueve con rAF y no con
-     animaciones CSS dentro del SVG.                             */
-  function iniciarFacial(demo) {
-    var CICLO_FACIAL = 5200;
-    var tarjeta = demo.closest('.tarjeta');
-    var trazos = demo.querySelectorAll('.facial__trazo');
-    var rasgos = demo.querySelectorAll('.facial__rasgo');
-    var oks = demo.querySelectorAll('.facial__ok');
-    var scan = demo.querySelector('.facial__scan');
-    var check = demo.querySelector('.facial__check');
-    var cara = demo.querySelector('.facial__cara');
-    var texto = demo.querySelector('.facial__estado-texto');
-    var barra = demo.querySelector('.facial__progreso-barra');
-
-    var largos = [];
-    var activo = false;
-    var inicio = 0;
-    var cuadroId = null;
-    var resetId = null;
-    var estadoActual = '';
-
-    function rampa(t, desde, hasta) {
-      return Math.min(Math.max((t - desde) / (hasta - desde), 0), 1);
-    }
-
-    function suave(x) {
-      return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
-    }
-
-    function salida(x) {
-      return 1 - Math.pow(1 - x, 3);
-    }
-
-    // Prepara los trazos para el efecto de dibujado
-    try {
-      trazos.forEach(function (tr, i) {
-        largos[i] = Math.ceil(tr.getTotalLength()) + 1;
-        tr.style.strokeDasharray = largos[i];
-      });
-    } catch (err) {
-      largos = [];
-    }
-
-    function ponerEstado(nuevo, ok) {
-      if (nuevo === estadoActual) return;
-      estadoActual = nuevo;
-      texto.textContent = nuevo;
-      demo.classList.toggle('facial--ok', ok);
-    }
-
-    function render(t) {
-      // 1. Silueta: la cabeza primero, los hombros un poco después
-      trazos.forEach(function (tr, i) {
-        if (!largos[i]) return;
-        var d = suave(rampa(t, 200 + i * 300, 1300 + i * 300));
-        tr.style.strokeDashoffset = largos[i] * (1 - d);
-      });
-
-      // 2. Rasgos y malla, escalonados
-      rasgos.forEach(function (r, i) {
-        r.style.opacity = rampa(t, 1100 + i * 45, 1300 + i * 45);
-      });
-
-      // 3. Haz de escaneo de y=38 a y=112
-      var barrido = suave(rampa(t, 1700, 2800));
-      scan.setAttribute('transform', 'translate(0 ' + (38 + barrido * 74).toFixed(2) + ')');
-      scan.style.opacity = rampa(t, 1650, 1750) * (1 - rampa(t, 2800, 2950));
-
-      // 4. Acceso concedido
-      var ok = rampa(t, 2950, 3150) * (1 - rampa(t, 4500, 4800));
-      oks.forEach(function (el) { el.style.opacity = ok; });
-
-      var s = salida(rampa(t, 3000, 3250));
-      check.style.opacity = ok;
-      check.setAttribute('transform', 'translate(78 76) scale(' + s.toFixed(3) + ') translate(-78 -76)');
-
-      // 5. Fundido de salida
-      cara.style.opacity = 1 - rampa(t, 4500, 4900);
-
-      // Barra de progreso: avanza con el haz y queda llena en verde
-      var progreso = t < 4500 ? barrido : 1 - rampa(t, 4500, 4900);
-      barra.style.transform = 'scaleX(' + progreso.toFixed(3) + ')';
-
-      // Texto de estado
-      if (t < 1700) ponerEstado('Detectando rostro…', false);
-      else if (t < 2950) ponerEstado('Escaneando…', false);
-      else if (t < 4500) ponerEstado('Acceso concedido', true);
-      else ponerEstado('Listo para el siguiente', false);
-    }
-
-    function cuadro(ahora) {
-      if (!activo) return;
-      render((ahora - inicio) % CICLO_FACIAL);
-      cuadroId = requestAnimationFrame(cuadro);
-    }
-
-    function reproducir() {
-      clearTimeout(resetId);
-      if (activo) return;
-      activo = true;
-      inicio = performance.now();
-      cuadroId = requestAnimationFrame(cuadro);
-    }
-
-    function detener() {
-      if (!activo) return;
-      activo = false;
-      cancelAnimationFrame(cuadroId);
-      // Se vuelve al estado inicial cuando el panel ya terminó de cerrarse
-      resetId = setTimeout(function () { render(0); }, 420);
-    }
-
-    // Movimiento reducido: se muestra el resultado final, quieto
-    if (reducirMovimiento) {
-      render(3600);
-      return;
-    }
-
-    render(0);
-
-    if (window.matchMedia('(hover: hover)').matches) {
-      tarjeta.addEventListener('mouseenter', reproducir);
-      tarjeta.addEventListener('mouseleave', function () {
-        if (!tarjeta.contains(document.activeElement)) detener();
-      });
-      tarjeta.addEventListener('focusin', reproducir);
-      tarjeta.addEventListener('focusout', function () {
-        if (!tarjeta.matches(':hover')) detener();
-      });
-    } else if (hayObserver) {
-      new IntersectionObserver(function (entradas) {
-        if (entradas[0].isIntersecting) reproducir();
-        else detener();
-      }, { threshold: 0.4 }).observe(demo);
-    } else {
-      render(3600);
-    }
-  }
-
-  document.querySelectorAll('.facial').forEach(iniciarFacial);
-
   /* ── Brillo que sigue al mouse ──────────────────────────────
      Solo con mouse (en táctil no hay hover). Actualiza la
      posición del degradé dorado de la tarjeta bajo el cursor.   */
   if (punteroFino) {
     document.addEventListener('pointermove', function (e) {
-      var el = e.target.closest && e.target.closest('.tarjeta, .sector, .vista-previa');
+      var el = e.target.closest && e.target.closest('.sector, .etapa');
       if (!el) return;
       var caja = el.getBoundingClientRect();
       el.style.setProperty('--mx', (e.clientX - caja.left) + 'px');
