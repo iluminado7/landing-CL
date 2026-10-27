@@ -13,18 +13,11 @@ Cerrajería Leonardo antes de publicar (plan, etapa 1).
 
 ### Comercial
 
-- [ ] Público prioritario. Se priorizaron *Consorcios y edificios*, *Empresas
-      y comercios* y *Desarrollos inmobiliarios*; el resto va como chips.
-- [ ] Textos del hero (los sugeridos en el plan).
-- [ ] Servicios vigentes: los 6 del sitio actual. ¿Sigue la copia de llaveros
-      y tarjetas?
-- [ ] Respuestas de las preguntas frecuentes. Se escribieron solo con datos
-      del sitio; falta aprobación.
-- [ ] Pasos de *Cómo trabajamos*: se reescribieron con los “Pasos para la
-      contratación” de la página de presupuesto online (no hay relevamiento
-      previo del lugar). Confirmar que el resumen en 4 pasos sea correcto.
-- [ ] Bloque “Qué vas a encontrar” del presupuesto online: si la página cambia
-      (por ejemplo, se quitan los contratos descargables), actualizarlo.
+- [ ] Textos cortos de cada sector (Comercios, Alquiler temporario, Barrio
+      privado y Casas particulares se escribieron para la landing).
+- [ ] Cifras del hero (+1300, +1600, +300K): las indicó la empresa; actualizar
+      cuando cambien.
+- [ ] Textos de Expansión y del premio: tomados del sitio, resumidos.
 
 ### Datos de contacto
 
@@ -39,22 +32,19 @@ Cerrajería Leonardo antes de publicar (plan, etapa 1).
 
 ### Captación
 
-La landing no tiene formulario propio: deriva al presupuesto online
-(<https://cerrajerialeonardo.com.ar/presupuesto-online/>), que ya tiene el
-formulario de *Solicitar servicio*.
+La landing no tiene formulario propio: el CTA final y el del header llevan al
+formulario de *Solicitar servicio* del presupuesto online
+(<https://cerrajerialeonardo.com.ar/presupuesto-online/#wpforms-1588>).
 
-- [ ] Medir los clics al presupuesto online (`clic_presupuesto_online`) y,
-      si se puede, las solicitudes que llegan desde esa página.
+- [ ] Si se cambia el formulario en WordPress, revisar que el ancla
+      `#wpforms-1588` siga existiendo.
+- [ ] Medir los clics (`clic_solicitar_servicio`) y, si se puede, las
+      solicitudes que llegan desde esa página.
 
 ### Contenido que quedó afuera a propósito
 
-El plan pide no publicar cifras ni contenido no confirmado. Quedaron afuera:
-
-- **Contadores** del sitio actual (+1.300 consorcios, +1.600 puertas, +300K
-  usuarios, +1.100 administradores, +30 años). Si la empresa los confirma,
-  se pueden sumar en la franja de confianza.
-- **Premio Best CEO Awards 2026** (Eduardo Rovito). Está publicado en el
-  sitio; se puede sumar como bloque de confianza si se aprueba.
+- **Contadores** de administradores activos (+1.100) y años de experiencia:
+  la empresa pidió solo consorcios, puertas y usuarios.
 - **Ranking de administradores** con nombres de terceros: requiere permiso.
 - **Testimonios y proyectos**: no hay material autorizado.
 - **Video del hero** del sitio actual: el plan pide evitar videos pesados.

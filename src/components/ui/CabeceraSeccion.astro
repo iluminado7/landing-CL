@@ -1,0 +1,11 @@
+---
+// El título va en el slot para poder marcar la parte en <span class="oro">.
+import Badge from './Badge.astro';
+
+const { badge, id, subtitulo, centro = false, class: clase = '' } = Astro.props;
+---
+<header class:list={['seccion__cabecera', { 'seccion__cabecera--centro': centro }, clase]}>
+  {badge && <Badge>{badge}</Badge>}
+  <h2 class="seccion__titulo" id={id}><slot /></h2>
+  {subtitulo && <p class="seccion__subtitulo">{subtitulo}</p>}
+</header>

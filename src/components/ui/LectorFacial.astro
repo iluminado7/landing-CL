@@ -1,0 +1,184 @@
+---
+// Demo del lector facial (solución "Sistemas biométricos").
+// La anima scripts/escenas/facial.js: se dibuja la silueta, pasa el haz y
+// se tilda en verde. Sin JS queda el lector en espera, en dorado.
+---
+<div class="facial" aria-hidden="true">
+  <svg class="facial__svg" viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="facial-cuerpo" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2a2725"/>
+        <stop offset="1" stop-color="#1a1817"/>
+      </linearGradient>
+      <linearGradient id="facial-haz" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#f5be00" stop-opacity="0"/>
+        <stop offset="1" stop-color="#f5be00" stop-opacity="0.35"/>
+      </linearGradient>
+      <clipPath id="facial-pantalla">
+        <rect x="20" y="26" width="80" height="104" rx="6"/>
+      </clipPath>
+    </defs>
+
+    <!-- Cuerpo y cámara -->
+    <rect x="10" y="4" width="100" height="152" rx="14" fill="url(#facial-cuerpo)" stroke="rgba(255,255,255,0.08)"/>
+    <circle cx="60" cy="15" r="3.5" fill="#0f0e0d" stroke="rgba(245,190,0,0.4)"/>
+    <circle cx="61" cy="14" r="1" fill="rgba(248,249,250,0.5)"/>
+
+    <!-- Pantalla -->
+    <rect x="20" y="26" width="80" height="104" rx="6" fill="#0f0e0d" stroke="rgba(245,190,0,0.25)"/>
+    <rect class="facial__ok" x="20" y="26" width="80" height="104" rx="6" fill="rgba(34,197,94,0.08)" stroke="rgba(34,197,94,0.6)"/>
+
+    <g clip-path="url(#facial-pantalla)">
+      <!-- Marco de enfoque -->
+      <path d="M32 46V38h8M80 38h8v8M88 102v8h-8M40 110h-8v-8" stroke="#f5be00" stroke-opacity="0.8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path class="facial__ok" d="M32 46V38h8M80 38h8v8M88 102v8h-8M40 110h-8v-8" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <g class="facial__cara">
+        <!-- Silueta que se dibuja: cabeza y hombros -->
+        <g stroke="#f5be00" stroke-width="2" stroke-linecap="round">
+          <circle class="facial__trazo" cx="60" cy="62" r="14"/>
+          <path class="facial__trazo" d="M38 108c0-14 10-22 22-22s22 8 22 22"/>
+        </g>
+
+        <!-- Malla facial y rasgos -->
+        <path class="facial__rasgo" d="M60 50L50 56L48 64L52 72L60 76L68 72L72 64L70 56Z M50 56L55 60L60 50L65 60L70 56 M48 64L55 60 M72 64L65 60" stroke="rgba(245,190,0,0.28)" stroke-width="0.6" stroke-linejoin="round"/>
+        <g fill="#f5be00">
+          <circle class="facial__rasgo" cx="60" cy="50" r="0.9"/>
+          <circle class="facial__rasgo" cx="50" cy="56" r="0.9"/>
+          <circle class="facial__rasgo" cx="70" cy="56" r="0.9"/>
+          <circle class="facial__rasgo" cx="55" cy="60" r="1.6"/>
+          <circle class="facial__rasgo" cx="65" cy="60" r="1.6"/>
+          <circle class="facial__rasgo" cx="48" cy="64" r="0.9"/>
+          <circle class="facial__rasgo" cx="72" cy="64" r="0.9"/>
+          <circle class="facial__rasgo" cx="52" cy="72" r="0.9"/>
+          <circle class="facial__rasgo" cx="68" cy="72" r="0.9"/>
+          <circle class="facial__rasgo" cx="60" cy="76" r="0.9"/>
+        </g>
+        <path class="facial__rasgo" d="M55.5 68q4.5 3 9 0" stroke="#f5be00" stroke-width="1.6" stroke-linecap="round"/>
+
+        <!-- Silueta verde de acceso concedido -->
+        <g class="facial__ok" stroke="#22c55e" stroke-width="2" stroke-linecap="round">
+          <circle cx="60" cy="62" r="14"/>
+          <path d="M38 108c0-14 10-22 22-22s22 8 22 22"/>
+        </g>
+
+        <!-- Tilde -->
+        <g class="facial__check">
+          <circle cx="78" cy="76" r="8" fill="#22c55e"/>
+          <path d="M74.5 76l2.5 2.5 4.5-5" stroke="#0f0e0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+      </g>
+
+      <!-- Haz de escaneo: línea dorada con estela -->
+      <g class="facial__scan">
+        <rect x="24" y="-14" width="72" height="14" fill="url(#facial-haz)"/>
+        <rect x="24" y="-1" width="72" height="2" rx="1" fill="#f5be00"/>
+      </g>
+    </g>
+
+    <!-- LED -->
+    <circle cx="60" cy="143" r="3" fill="#f5be00"/>
+    <circle class="facial__ok facial__led-ok" cx="60" cy="143" r="3.5" fill="#22c55e"/>
+  </svg>
+
+  <div class="facial__info">
+    <span class="facial__rotulo">Reconocimiento facial</span>
+    <p class="facial__estado"><span class="facial__estado-texto">Detectando rostro…</span></p>
+    <span class="facial__progreso"><span class="facial__progreso-barra"></span></span>
+    <p class="facial__dato">Sin llaves ni tarjetas: la credencial es tu cara.</p>
+  </div>
+</div>
+
+<style>
+  .facial {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 16px;
+    background: var(--negro-profundo);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+  }
+
+  .facial__svg {
+    width: 108px;
+    height: 144px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.5));
+  }
+
+  /* Estado inicial; facial.js lo anima cuadro a cuadro */
+  .facial__ok,
+  .facial__check,
+  .facial__scan { opacity: 0; }
+
+  .facial__led-ok { filter: drop-shadow(0 0 4px #22c55e); }
+
+  .facial__info { min-width: 0; flex: 1; }
+
+  .facial__rotulo {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--oro);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .facial__estado {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    color: var(--texto);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.3;
+    transition: color var(--medio);
+  }
+
+  .facial__estado::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--oro);
+    transition: background var(--medio), box-shadow var(--medio);
+  }
+
+  .facial__progreso {
+    display: block;
+    height: 3px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 2px;
+  }
+
+  .facial__progreso-barra {
+    display: block;
+    height: 100%;
+    background: var(--oro);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: background var(--medio);
+  }
+
+  .facial__dato {
+    margin-top: 12px;
+    color: var(--texto-suave);
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  /* Acceso concedido: todo lo dorado pasa a verde */
+  .facial--ok .facial__estado { color: #4ade80; }
+
+  .facial--ok .facial__estado::before {
+    background: #22c55e;
+    box-shadow: 0 0 6px #22c55e;
+  }
+
+  .facial--ok .facial__progreso-barra { background: #22c55e; }
+</style>

@@ -1,0 +1,71 @@
+---
+// Solo fotos reales: nada de IA en esta sección.
+import CabeceraSeccion from '../components/ui/CabeceraSeccion.astro';
+import { ruta } from '../scripts/ruta.js';
+---
+<section class="seccion seccion--alterna reconocimiento" id="reconocimiento" aria-labelledby="reconocimiento-titulo">
+  <div class="contenedor">
+    <CabeceraSeccion centro badge="Reconocimiento internacional" id="reconocimiento-titulo"
+      subtitulo="Liderazgo que trasciende fronteras">
+      Liderazgo argentino con <span class="oro">reconocimiento internacional</span>
+    </CabeceraSeccion>
+
+    <p class="premio__texto">
+      Nuestro director, <strong>Eduardo Rovito</strong>, fue galardonado como <span class="oro">ganador</span> en la edición 2026 de los <span class="oro">Best CEO Awards</span>, cuya ceremonia de gala se celebró en el hotel Mandarin Oriental Ritz de Madrid, España. Un reconocimiento al liderazgo, la visión estratégica y el compromiso de Eduardo, y un hito sin precedentes: somos la <span class="oro">primera cerrajería de Argentina</span> en recibir este galardón internacional.
+    </p>
+
+    <div class="premio__fotos">
+      <figure class="premio__foto">
+        <img src={ruta('/img/premio-best-ceo-trofeo.webp')} alt="Trofeo Best CEO Awards 2026 de Eduardo Rovito" width="960" height="720" loading="lazy">
+      </figure>
+      <figure class="premio__foto">
+        <img src={ruta('/img/premio-best-ceo-certificado.webp')} alt="Certificado Best CEO Awards 2026 a nombre de Eduardo Rovito" width="960" height="720" loading="lazy">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reconocimiento :global(.seccion__cabecera) { max-width: 760px; }
+
+  .premio__texto {
+    max-width: 820px;
+    margin: 0 auto 40px;
+    color: rgba(248, 249, 250, 0.85);
+    font-size: 16px;
+    line-height: 1.75;
+    text-align: center;
+  }
+
+  .premio__texto strong { color: #ffffff; }
+
+  .premio__fotos {
+    display: grid;
+    gap: 16px;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  .premio__foto {
+    margin: 0;
+    overflow: hidden;
+    background: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio-grande);
+  }
+
+  .premio__foto img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: transform 0.6s var(--salida);
+  }
+
+  @media (hover: hover) {
+    .premio__foto:hover img { transform: scale(1.03); }
+  }
+
+  @media (min-width: 640px) {
+    .premio__fotos { grid-template-columns: 1fr 1fr; }
+  }
+</style>
